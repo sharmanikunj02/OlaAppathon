@@ -4,11 +4,26 @@
     android:layout_height="fill_parent"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-    android:background="@color/black"
     android:orientation="vertical" >
 
+    <com.olaappathon.helper.CustomAutoCompleteTextView
+        android:id="@+id/customEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:hint="type here"
+        android:paddingBottom="10dp" />
+
+    <Spinner
+        android:id="@+id/spr_place_type"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:spinnerMode="dialog"
+        android:layout_alignParentTop="true"
+        android:prompt="@string/app_transparency_choose"
+        android:paddingBottom="5dp" />
+
     <RelativeLayout
-        android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"

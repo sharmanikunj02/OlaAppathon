@@ -2,6 +2,8 @@ package com.olaappathon.main;
 
 import android.content.Context;
 import android.os.Build;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -20,6 +22,18 @@ public class Platform {
 	 */
 	public static int getProcessId() {
 		return android.os.Process.myPid();
+	}
+
+	public static String getDeviceId() {
+		final TelephonyManager telephonyManager = (TelephonyManager) OlaAppathon.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+		String deviceId = telephonyManager.getDeviceId();
+
+		if (deviceId != null) {
+
+			return Integer.toHexString(deviceId.hashCode());
+		} else {
+			return "";
+		}
 	}
 
 	/**

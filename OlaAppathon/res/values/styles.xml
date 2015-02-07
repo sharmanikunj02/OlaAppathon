@@ -54,6 +54,23 @@
         <item name="android:textSize">12dp</item>
     </style>
     
+    <style name="bottom_button_orange" parent="@style/bottom_button">
+        <item name="android:background">@drawable/button_orange_dark</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="bottom_button_lightgrey" parent="@style/bottom_button">
+        <item name="android:background">@drawable/button_grey_light</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="bottom_button">
+        <item name="android:layout_width">132dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+    
      <!-- PopUpMenu -->
      
     <style name="Animations" />

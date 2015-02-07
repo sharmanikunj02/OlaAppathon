@@ -17,5 +17,10 @@
     <color name="popup_Window_border">#5a5a5a</color>
     <color name="text_color">#d2d2d2</color>
     <color name="text_color_hint">#919191</color>
-    
+    <color name="switcher_bottom">#ff272727</color>
+    <color name="yellow">#f8ca00</color>
+    <color name="divider_color">#c8c8c8</color>
+    <color name="button_color_grey">#c8c8c8</color>
+    <color name="circle_fill">#40ff0000</color>
+
 </resources>

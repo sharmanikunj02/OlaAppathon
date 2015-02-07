@@ -13,16 +13,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.olaappathon.app.R;
 import com.olaappathon.customgridview.CustomGridViewAdapter;
 import com.olaappathon.customgridview.GridViewItem;
-import com.olaappathon.screens.AddNewGroup;
 import com.olaappathon.screens.OlaMapActivity;
+import com.olaappathon.screens.RideMapActivity;
 
 public class FragmentHome extends Fragment {
-	// this Fragment will be called from MainActivity
+	// this Fragment will be called from DashBoardActivity
 	GridView gridView;
 	ArrayList<GridViewItem> gridArray = new ArrayList<GridViewItem>();
 	CustomGridViewAdapter customGridAdapter;
@@ -50,17 +49,28 @@ public class FragmentHome extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		Bitmap homeIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_launcher);
 		Bitmap userIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_launcher);
-		gridArray.add(new GridViewItem(homeIcon, "Add Group"));
-		gridArray.add(new GridViewItem(userIcon, "View Group"));
+		gridArray.add(new GridViewItem(homeIcon, "Vicinity"));
+		gridArray.add(new GridViewItem(userIcon, "Ride Now"));
 		gridView = (GridView) getView().findViewById(R.id.gridView1);
 		customGridAdapter = new CustomGridViewAdapter(getActivity(), R.layout.row_grid, gridArray);
 		gridView.setAdapter(customGridAdapter);
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-				Intent startAddGroup = new Intent(getActivity(), OlaMapActivity.class);
-				startActivity(startAddGroup);
-				Toast.makeText(getActivity().getApplicationContext(), gridArray.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+				switch (position) {
+				case 0:
+					Intent startScenario = new Intent(getActivity(), OlaMapActivity.class);
+					startActivity(startScenario);
+					break;
+				case 1:
+					Intent startMap = new Intent(getActivity(), RideMapActivity.class);
+					startActivity(startMap);
+					break;
+
+				default:
+					break;
+				}
+
 			}
 		});
 

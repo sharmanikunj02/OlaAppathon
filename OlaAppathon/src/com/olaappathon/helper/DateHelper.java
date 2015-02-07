@@ -1,13 +1,9 @@
 package com.olaappathon.helper;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import android.content.Context;
 import android.text.format.DateUtils;
@@ -118,42 +114,6 @@ public class DateHelper {
 	}
 
 	/**
-	 * Creates the day mask.
-	 * 
-	 * @param daysArray
-	 *            the days array
-	 * @return the int
-	 */
-	public static int createDayMask(JSONArray daysArray) {
-		/** The Constant MONDAY. */
-		int mask = 0;
-		try {
-			for (int i = 0; daysArray != null && i < daysArray.length(); i++) {
-
-				if (daysArray.getString(i).equalsIgnoreCase("Mon")) {
-					mask = mask | MONDAY;
-				} else if (daysArray.getString(i).equalsIgnoreCase("Tue")) {
-					mask = mask | TUESDAY;
-				} else if (daysArray.getString(i).equalsIgnoreCase("Wed")) {
-					mask = mask | WEDNESDAY;
-				} else if (daysArray.getString(i).equalsIgnoreCase("Thu")) {
-					mask = mask | THURSDAY;
-				} else if (daysArray.getString(i).equalsIgnoreCase("Fri")) {
-					mask = mask | FRIDAY;
-				} else if (daysArray.getString(i).equalsIgnoreCase("Sat")) {
-					mask = mask | SATURDAY;
-				} else if (daysArray.getString(i).equalsIgnoreCase("Sun")) {
-					mask = mask | SUNDAY;
-				}
-			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return mask;
-	}
-
-	/**
 	 * Method millisToNextMinute.
 	 * 
 	 * @return long
@@ -178,39 +138,4 @@ public class DateHelper {
 		return format.format(new Date(time));
 	}
 
-	/**
-	 * Method formatDate.
-	 * 
-	 * @param context
-	 *            Context
-	 * @param date
-	 *            long
-	 * @return String
-	 */
-	public static String formatDate(Context context, long date) {
-		if (date > 0) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			return formatter.format(new Date(date));
-		}
-		return null;
-	}
-
-	/**
-	 * Method getDateSummary.
-	 * 
-	 * @param date
-	 *            long
-	 * @return String
-	 */
-	public static String getDateSummary(long date) {
-		if (date == 0L) {
-			return "";
-		}
-		/* shruthi added for Defect id 2988 */
-		SimpleDateFormat _12HourSDF = new SimpleDateFormat("MMM dd, hh:mm a");
-		Date eventTime = new Date(date);
-		String result = _12HourSDF.format(eventTime);
-		/* end */
-		return result;
-	}
 }

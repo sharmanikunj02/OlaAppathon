@@ -6,7 +6,7 @@ import com.olaappathon.app.R;
 import com.olaappathon.screens.CommonActivity;
 
 public class FragmentTellAFriend extends CommonActivity {
-	// this Fragment will be called from MainActivity
+	// this Fragment will be called from DashBoardActivity
 	public FragmentTellAFriend(){}
 	
 	@Override

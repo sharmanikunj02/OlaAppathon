@@ -2,6 +2,6 @@
 <resources>
     <!-- APP CONFIG -->
 
-    <string name="OLA_SERVER_URL">""</string>
+    <string name="OLA_SERVER_URL">"http://mobile.api.foo.com/v1"</string>
 
 </resources>

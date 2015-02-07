@@ -175,8 +175,7 @@ public class OlaAppathon extends Application {
 				}).create();
 		dialog.show();
 	}
-	
-	
+
 	/**
 	 * Clear remote key.
 	 */

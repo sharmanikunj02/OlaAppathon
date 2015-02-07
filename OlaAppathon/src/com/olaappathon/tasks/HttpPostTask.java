@@ -13,6 +13,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -30,8 +31,8 @@ public class HttpPostTask extends AsyncTask<String, Void, String> {
 	/** The http response. */
 	protected HttpResponse httpResponse;
 	
-	/** The post json array. */
-	protected JSONArray postJsonArray = null;
+	/** The post json object. */
+	protected JSONObject postJsonObject = null;
 	
 	/** The http interface. */
 	protected HttpInterface httpInterface;
@@ -52,8 +53,8 @@ public class HttpPostTask extends AsyncTask<String, Void, String> {
 	 *
 	 * @param json the new json
 	 */
-	public void setJson(JSONArray json) {
-		postJsonArray = json;
+	public void setJson(JSONObject json) {
+		postJsonObject = json;
 	}
 
 	/**
@@ -67,13 +68,13 @@ public class HttpPostTask extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... args) {
 		String postJsonData = null;
 		String url = args[0];
-		if (postJsonArray != null) {
-			postJsonData = postJsonArray.toString();
+		if (postJsonObject != null) {
+			postJsonData = postJsonObject.toString();
 		}
 		try {
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(url);
-			if (postJsonArray != null) {
+			if (postJsonObject != null) {
 				StringEntity se = new StringEntity(postJsonData);
 				httpPost.setEntity(se);
 				se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
@@ -88,7 +89,7 @@ public class HttpPostTask extends AsyncTask<String, Void, String> {
 			while ((line = buffer.readLine()) != null) {
 				result.append(line);
 			}
-			postJsonArray = null;
+			postJsonObject = null;
 			return result.toString();
 		} catch (IOException e) {
 			Log.i("HttpPostTask", "ioexception" + e.getMessage());

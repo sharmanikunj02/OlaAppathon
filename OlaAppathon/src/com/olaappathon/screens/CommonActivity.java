@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import com.olaappathon.app.R;
@@ -14,7 +15,7 @@ import com.olaappathon.app.R;
 /**
  * class CommonActivity.
  */
-public class CommonActivity extends Activity {
+public class CommonActivity extends FragmentActivity {
 
 	/** The busy dialog. */
 	private ProgressDialog busyDialog;

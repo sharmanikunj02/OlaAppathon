@@ -5,24 +5,35 @@
 
     <!-- Layout set for data you can use accordingly -->
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tour_text"
+        android:orientation="vertical"
+        android:padding="20dp" >
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_launcher" />
+        <EditText
+            android:id="@+id/name"
+            style="@style/edit_match_width_single_line"
+            android:hint="@string/common_name"
+            android:textColor="@color/text_color" />
 
-        <TextView
-            android:id="@+id/txtLabel"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/number"
+            style="@style/edit_match_width_single_line"
+            android:hint="@string/number"
+            android:textColor="@color/text_color" />
+
+        <Button
+            android:id="@+id/Submit"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="17dp"
-            android:text="Help..!!!!!"
-            android:textSize="26dp" />
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_orange_dark"
+            android:onClick="onSubmitClick"
+            android:text="Submit"
+            android:textAppearance="@style/bottom_button"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -26,29 +26,48 @@
 
         <!-- ******************** SERVICES ******************** -->
         <service
-            android:name="com.olaappathin.services.LocateService"
+            android:name="com.olaappathon.services.LocateService"
             android:enabled="true" />
 
         <!-- ******************** ACTIVITIES ******************** -->
 
         <activity
-            android:name="com.olaappathon.app.MainActivity"
+            android:name="com.olaappathon.app.DashBoardActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.olaappathon.navigationdrawer.FragmentTellAFriend"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.navigationdrawer.FragmentHelp"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.screens.AddNewGroup"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.screens.SignInActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.screens.SignUpActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.screens.OlaMapActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.screens.PanicTriggerDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.screens.RideMapActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.olaappathon.screens.SplashScreen"
+            android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.olaappathon.navigationdrawer.FragmentTellAFriend"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.olaappathon.screens.AddNewGroup"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.olaappathon.screens.OlaMapActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
     <permission
@@ -60,6 +79,7 @@
         android:required="true" />
 
     <uses-permission android:name="com.olaappathon.app.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

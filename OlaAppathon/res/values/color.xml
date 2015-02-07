@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#8c8e8c</color>
+    <color name="list_background_pressed">#99ffffff</color>
+    <color name="list_divider">#B0B0B0</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="tab_background">#1e1e1e</color>
+    <color name="slider_yellow">#f8ca00</color>
+    <color name="list_text1">#e1e1e1</color>
+    <color name="light_grey">#8c8e8c</color>
+    <color name="tour_text">#191919</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="popup_Window_border">#5a5a5a</color>
+    <color name="text_color">#d2d2d2</color>
+    <color name="text_color_hint">#919191</color>
+    
+</resources>

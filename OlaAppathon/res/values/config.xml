@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- APP CONFIG -->
+
+    <string name="OLA_SERVER_URL">""</string>
+
+</resources>

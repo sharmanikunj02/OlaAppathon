@@ -23,6 +23,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -92,7 +93,7 @@ public class OlaMapActivity extends FragmentActivity implements OnMapClickListen
 	private static Geocoder geocoder;
 	// The location at which user touches the Google Map
 	LatLng mLocation = null;
-
+	TextToSpeech ttobj;
 	// Calling for Autosearch text
 	// start
 	PlacesTask placesTask;
@@ -113,6 +114,7 @@ public class OlaMapActivity extends FragmentActivity implements OnMapClickListen
 	// A String array containing place types displayed to user
 	String[] mPlaceTypeName = null;
 	HashMap<String, Place> mHMReference = new HashMap<String, Place>();
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -122,6 +124,15 @@ public class OlaMapActivity extends FragmentActivity implements OnMapClickListen
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ola_zone_map);
+
+		ttobj = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+			@Override
+			public void onInit(int status) {
+				if (status != TextToSpeech.ERROR) {
+					ttobj.setLanguage(Locale.UK);
+				}
+			}
+		});
 
 		// Array of place types
 		mPlaceType = getResources().getStringArray(R.array.place_type);
@@ -182,7 +193,7 @@ public class OlaMapActivity extends FragmentActivity implements OnMapClickListen
 		myMap.setOnMapClickListener(this);
 		// Marker click listener
 		myMap.setOnMarkerClickListener(markerClick);
-		
+
 		LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
 		// Creating a criteria object to retrieve provider
@@ -245,9 +256,11 @@ public class OlaMapActivity extends FragmentActivity implements OnMapClickListen
 	OnMarkerClickListener markerClick = new OnMarkerClickListener() {
 		@Override
 		public boolean onMarkerClick(Marker marker) {
+
 			if (!mHMReference.containsKey(marker.getId()))
 				return false;
 			Place place = mHMReference.get(marker.getId());
+			ttobj.speak(place.mPlaceName, TextToSpeech.QUEUE_FLUSH, null);
 			DisplayMetrics dm = new DisplayMetrics();
 			getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -320,18 +333,13 @@ public class OlaMapActivity extends FragmentActivity implements OnMapClickListen
 		}
 
 		protected void startImageDownloadingTask(final List<LatLng> points) {
-			final int size = points.size();			
-/*			Handler handler = new Handler();
-			for (i = 0; i<size-3 ;i++) {
-			    handler.postDelayed(new Runnable() {			    	
-			         @Override
-			         public void run() {
-			        	 getNearestPlace(points.get(i));
-							myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(points.get(i), 15));					         }
-			         }, 1000);
-			    createCircle(points.get(i));
-			    } 
-*/	
+			final int size = points.size();
+			/*
+			 * Handler handler = new Handler(); for (i = 0; i<size-3 ;i++) { handler.postDelayed(new Runnable() {
+			 * 
+			 * @Override public void run() { getNearestPlace(points.get(i)); myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(points.get(i), 15)); } },
+			 * 1000); createCircle(points.get(i)); }
+			 */
 			getNearestPlace(points.get(size / 2));
 			createCircle(points.get(size / 2));
 		}
@@ -533,7 +541,7 @@ public class OlaMapActivity extends FragmentActivity implements OnMapClickListen
 		latLng = location;
 		// myMap.clear();
 		// myMap.addMarker(markerOptions.position(location));
-		myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
+//		myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
 	}
 
 	/*

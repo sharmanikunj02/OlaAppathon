@@ -11,12 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.olaappathon.app.R;
 import com.olaappathon.customgridview.CustomGridViewAdapter;
 import com.olaappathon.customgridview.GridViewItem;
+import com.olaappathon.main.OlaAppathon;
 import com.olaappathon.screens.OlaMapActivity;
 import com.olaappathon.screens.RideMapActivity;
 
@@ -25,7 +27,7 @@ public class FragmentHome extends Fragment {
 	GridView gridView;
 	ArrayList<GridViewItem> gridArray = new ArrayList<GridViewItem>();
 	CustomGridViewAdapter customGridAdapter;
-
+	TextView helloText;
 	public FragmentHome() {
 	}
 
@@ -49,6 +51,8 @@ public class FragmentHome extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		Bitmap homeIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_launcher);
 		Bitmap userIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_launcher);
+		helloText = (TextView) getView().findViewById(R.id.helloText);
+		helloText.setText("Hi.."+OlaAppathon.getLoggedInName());
 		gridArray.add(new GridViewItem(homeIcon, "Vicinity"));
 		gridArray.add(new GridViewItem(userIcon, "Ride Now"));
 		gridView = (GridView) getView().findViewById(R.id.gridView1);

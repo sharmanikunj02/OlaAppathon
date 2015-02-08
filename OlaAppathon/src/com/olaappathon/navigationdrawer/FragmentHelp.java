@@ -81,8 +81,6 @@ public class FragmentHelp extends FragmentActivity implements NameNumberDialogLi
 		JSONArray groupArray = new JSONArray();
 		JSONObject groupIndividual = new JSONObject();
 		try {
-			// groupIndividual.put("groupId", "");
-			groupIndividual.put("groupName", "Group Name");
 			groupIndividual.put("ownerNo", "");
 
 			JSONArray memberDetailsArray = new JSONArray();
@@ -99,6 +97,7 @@ public class FragmentHelp extends FragmentActivity implements NameNumberDialogLi
 			groupArray.put(0, groupIndividual);
 			resultObject.accumulate("groupDetails", groupArray);
 			Log.d(OlaAppathon.TAG, resultObject.toString());
+			OlaAppathon.setPanicObject(resultObject.toString());
 			if (OlaAppathon.checkNetworkConnection()) {
 				Log.d(OlaAppathon.TAG, "Network is available");
 			}

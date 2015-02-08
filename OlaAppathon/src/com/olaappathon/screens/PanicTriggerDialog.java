@@ -12,7 +12,6 @@ public class PanicTriggerDialog extends CommonActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.panic_dialog_screen);
-		
 	}
 	
 	public void cancelPanic(View v) {

@@ -76,7 +76,7 @@ public class DashBoardActivity extends ActionBarActivity {
 
 	/** The my receiver. */
 	private PanicTriggerListner myReceiver;
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -119,7 +119,9 @@ public class DashBoardActivity extends ActionBarActivity {
 		// setting list adapter for Navigation Drawer
 		adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
 		mDrawerList.setAdapter(adapter);
-		registerPanicTrigger();
+		if (myReceiver == null) {
+			registerPanicTrigger();
+		}
 		// Enable action bar icon_luncher as toggle Home Button
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -146,15 +148,14 @@ public class DashBoardActivity extends ActionBarActivity {
 	/**
 	 * Register panic trigger.
 	 */
-	private void registerPanicTrigger() {		
+	private void registerPanicTrigger() {
 		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
-        filter.addAction(Intent.ACTION_SCREEN_OFF);
-        filter.addAction(Intent.ACTION_USER_PRESENT);
-        myReceiver = new PanicTriggerListner();
-        registerReceiver(myReceiver, filter);		
+		filter.addAction(Intent.ACTION_SCREEN_OFF);
+		filter.addAction(Intent.ACTION_USER_PRESENT);
+		myReceiver = new PanicTriggerListner();
+		registerReceiver(myReceiver, filter);
 	}
 
-	
 	/**
 	 * Slider menu item click listener.
 	 * 
@@ -235,7 +236,7 @@ public class DashBoardActivity extends ActionBarActivity {
 			break;
 		case 1:
 			ShowShareApplicationOption();
-//			startActivity(ActivityFactory.getInstance().getActivityIntent(OlaConstant.ACTIVITY_TELL_A_FRIEND));
+			// startActivity(ActivityFactory.getInstance().getActivityIntent(OlaConstant.ACTIVITY_TELL_A_FRIEND));
 			break;
 		case 2:
 			startActivity(ActivityFactory.getInstance().getActivityIntent(OlaConstant.ACTIVITY_EMERGENCY_MANAGER));
@@ -270,15 +271,14 @@ public class DashBoardActivity extends ActionBarActivity {
 	 * Show share application option.
 	 */
 	private void ShowShareApplicationOption() {
-		
+
 		Resources resources = getResources();
 		Intent emailIntent = new Intent();
 		emailIntent.setAction(Intent.ACTION_SEND);
-		String body = resources.getString(R.string.email_manager_share_email_body1) + "\n\n"
-				+ resources.getString(R.string.email_manager_share_email_body2);
+		String body = resources.getString(R.string.email_manager_share_email_body1) + "\n\n" + resources.getString(R.string.email_manager_share_email_body2);
 		emailIntent.putExtra(Intent.EXTRA_TEXT, body);
 		emailIntent.putExtra(Intent.EXTRA_SUBJECT,
-				resources.getString(R.string.email_manager_share_email_subject,OlaAppathon.getContext().getString(R.string.product_name)));
+				resources.getString(R.string.email_manager_share_email_subject, OlaAppathon.getContext().getString(R.string.product_name)));
 		emailIntent.setType("message/rfc822");
 		PackageManager pm = OlaAppathon.getContext().getPackageManager();
 		Intent sendIntent = new Intent(Intent.ACTION_SEND);
@@ -286,14 +286,13 @@ public class DashBoardActivity extends ActionBarActivity {
 
 		String text = getString(R.string.email_manager_share);
 		Intent openInChooser;
-		if(Platform.getDeviceApiVersion() == Build.VERSION_CODES.JELLY_BEAN_MR2) {
-		 openInChooser = Intent.createChooser(emailIntent, text);
-		}
-		else {
+		if (Platform.getDeviceApiVersion() == Build.VERSION_CODES.JELLY_BEAN_MR2) {
+			openInChooser = Intent.createChooser(emailIntent, text);
+		} else {
 			SpannableString spannable = new SpannableString(text);
 			// here we set the color
 			spannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, spannable.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-			 openInChooser = Intent.createChooser(emailIntent, spannable);
+			openInChooser = Intent.createChooser(emailIntent, spannable);
 		}
 		List<ResolveInfo> resInfo = pm.queryIntentActivities(sendIntent, 0);
 		List<LabeledIntent> intentList = new ArrayList<LabeledIntent>();

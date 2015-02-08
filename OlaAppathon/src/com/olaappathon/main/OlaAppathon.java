@@ -2,6 +2,9 @@ package com.olaappathon.main;
 
 import java.util.Locale;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
@@ -18,8 +21,13 @@ import android.widget.Toast;
 import com.olaappathon.app.R;
 import com.olaappathon.system.OptionManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OlaAppathon.
+ */
 public class OlaAppathon extends Application {
 
+	/** The context. */
 	private static Context context;
 
 	/** The Constant TAG. */
@@ -27,9 +35,19 @@ public class OlaAppathon extends Application {
 
 	/** The Constant KEY_REMOTE_KEY. */
 	public static final String KEY_ACTIVATED = "KEY_ACTIVATED";
+
+	/** The Constant KEY_SIGN_UP_OBJECT. */
+	public static final String KEY_SIGN_UP_OBJECT = "KEY_SIGN_UP_OBJECT";
+
+	/** The Constant KEY_PANIC_OBJECT. */
+	public static final String KEY_PANIC_OBJECT = "KEY_PANIC_OBJECT";
+
 	/** The handler. */
 	private Handler handler;
 
+	/* (non-Javadoc)
+	 * @see android.app.Application#onCreate()
+	 */
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
@@ -141,6 +159,70 @@ public class OlaAppathon extends Application {
 		getEditor().putString(KEY_ACTIVATED, value).commit();
 	}
 
+	/**
+	 * Sets the sign up object.
+	 *
+	 * @param value the new sign up object
+	 */
+	public static void setSignUpObject(String value) {
+		getEditor().putString(KEY_SIGN_UP_OBJECT, value).commit();
+	}
+
+	/**
+	 * Gets the sign up object.
+	 *
+	 * @return the sign up object
+	 */
+	public static String getSignUpObject() {
+		return getPrefs().getString(KEY_SIGN_UP_OBJECT, null);
+	}
+	
+	public static String getLoggedInName() {
+		return getSignUPObjectvalue("name");		
+	}
+
+	public static String getLoggedInEmail() {
+		return getSignUPObjectvalue("email");
+	}
+	
+	public static String getLoggedInPassword() {
+		return getSignUPObjectvalue("password");
+	}
+	
+	public static String getSignUPObjectvalue(String key){
+		try {
+			if(getSignUpObject() !=null){
+				JSONObject object = new JSONObject(getSignUpObject());				
+				return object.getString(key);
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	/**
+	 * Sets the panic object.
+	 *
+	 * @param value the new panic object
+	 */
+	public static void setPanicObject(String value) {
+		getEditor().putString(KEY_PANIC_OBJECT, value).commit();
+	}
+
+	/**
+	 * Gets the panic object.
+	 *
+	 * @return the panic object
+	 */
+	public static String getPanicObject() {
+		return getPrefs().getString(KEY_PANIC_OBJECT, null);
+	}
+
+	/**
+	 * Do reset keys.
+	 */
 	public void doResetKeys() {
 		clearActivatedKey();
 	}

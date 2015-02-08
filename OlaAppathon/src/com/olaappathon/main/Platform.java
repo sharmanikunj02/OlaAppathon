@@ -2,7 +2,6 @@ package com.olaappathon.main;
 
 import android.content.Context;
 import android.os.Build;
-import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
 import com.google.android.gms.common.ConnectionResult;

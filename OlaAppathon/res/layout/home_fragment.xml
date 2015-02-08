@@ -8,6 +8,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
+    <TextView
+        android:id="@+id/helloText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/gridView1"
+        android:paddingBottom="20dp"
+        android:textStyle="bold|italic"
+        android:text="Hello." />
+    
     <GridView
         android:id="@+id/gridView1"
         android:layout_width="fill_parent"
@@ -19,5 +29,7 @@
         android:verticalScrollbarPosition="right"
         android:verticalSpacing="10dp" >
     </GridView>
+
+    
 
 </RelativeLayout>

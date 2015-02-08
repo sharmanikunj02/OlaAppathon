@@ -1,5 +1,7 @@
 package com.olaappathon.activityfactory;
 
+import android.content.Intent;
+
 import com.olaappathon.app.DashBoardActivity;
 import com.olaappathon.helper.OlaConstant;
 import com.olaappathon.main.OlaAppathon;
@@ -9,8 +11,6 @@ import com.olaappathon.screens.OlaMapActivity;
 import com.olaappathon.screens.SignInActivity;
 import com.olaappathon.screens.SignUpActivity;
 import com.olaappathon.screens.SplashScreen;
-
-import android.content.Intent;
 
 public class ActivityFactory {
 

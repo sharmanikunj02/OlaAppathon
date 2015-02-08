@@ -69,6 +69,7 @@ public class SignUpActivity extends FragmentActivity implements HttpInterface {
 			
 
 			OlaAppathon.setActivated("true");
+			OlaAppathon.setSignUpObject(jsonObject.toString());
 			startActivity(ActivityFactory.getInstance().getActivityIntent(OlaConstant.ACTIVITY_DASHBOARD));
 			finish();
 			
